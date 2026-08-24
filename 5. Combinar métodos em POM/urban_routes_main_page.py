@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
 # Definição da classe da página, dos localizadores e do método na classe
 class UrbanRoutesPage:
     # Localizadores como atributos de classe
@@ -32,7 +31,7 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.TO_LOCATOR).send_keys(to_text)
 
     def click_personal_option(self):
-        # Clicar Personal
+        # Clicar em Personal
         self.driver.find_element(*self.PERSONAL_OPTION_LOCATOR).click()
 
     def click_carsharing_icon(self):
@@ -48,7 +47,7 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.CAMPING_LOCATOR).click()
 
     def get_audi_text(self):
-         # Retornar o texto "Audi"
+        # Retornar o texto "Audi"
         return self.driver.find_element(*self.AUDI_TEXT_LOCATOR).text
 
     def click_add_driver_license(self):
@@ -85,9 +84,20 @@ class UrbanRoutesPage:
 
     # Etapa para inserir "De", "Para" e clicar em "personal_option", "carsharing_icon", "book_button" e "camping"
     def choose_camping_car(self, from_text, to_text):
-        ...
+        self.enter_from_location(from_text)
+        self.enter_to_location(to_text)
+        self.click_personal_option()
+        self.click_carsharing_icon()
+        self.click_book_button()
+        self.click_camping()
 
     # Etapa para clicar em "add_driver_license"; para digitar "first_name", "last_name", "date_of_birth", "number"; e
     # para clicar em "title" e "add_button"
     def adding_driver_license(self, first_name, last_name, date_of_birth, number):
-        ...
+        self.click_add_driver_license()
+        self.enter_first_name(first_name)
+        self.enter_last_name(last_name)
+        self.enter_date_of_birth(date_of_birth)
+        self.enter_number(number)
+        self.click_title()
+        self.click_add_button()
